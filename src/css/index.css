@@ -1,5 +1,11 @@
 @import "@picocss/pico";
 
+:root {
+  --user-bubble-color: #fed;
+  --assistant-bubble-color: #b8b8ff;
+  --stream-bubble-color: #f8f7ff;
+}
+
 body {
   display: grid;
   grid-template-rows: 1fr auto;
@@ -28,13 +34,14 @@ main {
   list-style: none;
 
   li {
+    display: inline;
     padding: 1rem 1.25rem;
     color: #223;
     border-radius: 1rem;
 
     &.stream {
       justify-self: start;
-      background-color: #f5deb3;
+      background-color: var(--stream-bubble-color);
 
       &:empty {
         display: none;
@@ -43,12 +50,12 @@ main {
 
     &.user {
       justify-self: end;
-      background-color: #eaf2d7;
+      background-color: var(--user-bubble-color);
     }
 
     &.assistant {
       justify-self: start;
-      background-color: #b3dee2;
+      background-color: var(--assistant-bubble-color);
     }
   }
 }

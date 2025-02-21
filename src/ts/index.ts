@@ -1,5 +1,6 @@
 import { effect, signal } from "alien-signals";
 import ollama, { type Message } from "ollama/browser";
+import { scrollToBottom } from "./scroll-to-bottom";
 
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 const chatbotForm = document.querySelector<HTMLFormElement>("form")!;
@@ -12,29 +13,20 @@ const messageStream = signal<string>("");
 const chatHistory = signal<Message[]>([]);
 
 effect(() => {
-  const newMessage = chatHistory()
-    .at(chatHistoryList.childElementCount - 1);
+  const newMessage = chatHistory().at(chatHistoryList.childElementCount - 1);
 
   if (newMessage) {
     const li = document.createElement("li");
     li.classList.add(newMessage.role);
     li.textContent = newMessage.content;
     chatStream.before(li);
-
-    chatHistoryList.parentElement?.scroll({
-      top: chatHistoryList.parentElement.scrollHeight,
-      behavior: "smooth"
-    });
+    scrollToBottom(chatHistoryList);
   }
 });
 
 effect(() => {
   chatStream.textContent = messageStream();
-
-  chatHistoryList.parentElement?.scroll({
-    top: chatHistoryList.parentElement.scrollHeight,
-    behavior: "smooth"
-  });
+  scrollToBottom(chatHistoryList);
 });
 
 const askAi = async (content: string) => {
@@ -51,7 +43,7 @@ const askAi = async (content: string) => {
     messages: [
       {
         role: "system",
-        content: "you are a helpful assistant. you answer concisely. keep it short and casual, bro! answer in german."
+        content: "you are a helpful assistant. you answer concisely. keep it short and casual, bro!"
       },
       ...chatHistory()
     ],
