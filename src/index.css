@@ -1,0 +1,54 @@
+@import "@picocss/pico";
+
+body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 2rem;
+  width: min(50ch, 100% - 4rem);
+  height: calc(100dvh - 4rem);
+  margin: 2rem auto;
+}
+
+main,
+footer {
+  --pico-block-spacing-vertical: 0;
+}
+
+main {
+  overflow: auto;
+}
+
+.chat-history {
+  --pico-typography-spacing-vertical: 0;
+
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    padding: 1rem 1.25rem;
+    color: #223;
+    border-radius: 1rem;
+
+    &.stream {
+      justify-self: start;
+      background-color: #f5deb3;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &.user {
+      justify-self: end;
+      background-color: #eaf2d7;
+    }
+
+    &.assistant {
+      justify-self: start;
+      background-color: #b3dee2;
+    }
+  }
+}

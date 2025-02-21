@@ -1,0 +1,23 @@
+{
+  "name": "ollama-gui",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite dev"
+  },
+  "devDependencies": {
+    "@picocss/pico": "^2.0.6",
+    "alien-signals": "^1.0.4",
+    "eslint": "^9.20.1",
+    "eslint-config-sweet": "^23.0.2",
+    "ollama": "^0.5.13",
+    "robins-tsconfig": "^1.0.0",
+    "stylelint": "^16.14.1",
+    "stylelint-config-sweet": "^5.1.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1"
+  }
+}
