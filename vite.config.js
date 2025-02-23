@@ -1,11 +1,6 @@
+import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: "src",
-  build: {
-    target: "esnext",
-    outDir: "../dist",
-    emptyOutDir: true,
-    modulePreload: false
-  }
+  plugins: [sveltekit()]
 });

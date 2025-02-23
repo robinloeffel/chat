@@ -1,0 +1,19 @@
+@use "@picocss/pico";
+@use "variables";
+
+#app {
+  display: contents;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline-offset: variables.$space-8;
+}
+
+body {
+  text-rendering: optimizelegibility;
+}
