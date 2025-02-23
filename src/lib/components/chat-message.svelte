@@ -14,6 +14,13 @@
       marked(message.content, { async: false })
     )
   );
+
+  $effect(() => {
+    document.documentElement.scroll({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth"
+    });
+  });
 </script>
 
 <article
